@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+
+    <gazebo reference="base_inferior">
+        <material>Gazebo/Red</material>
+    </gazebo>    
+
+    <gazebo reference="base_superior">
+        <material>Gazebo/Red</material>
+    </gazebo>    
+    
+    <gazebo reference="perfil_ti">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>    
+
+    <gazebo reference="perfil_ts">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+    <gazebo reference="perfil_ii">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>    
+
+    <gazebo reference="perfil_is">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo> 
+
+    <gazebo reference="perfil_di">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>    
+
+    <gazebo reference="perfil_ds">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>     
+
+
+    <gazebo reference="esquina_front">
+        <material>Gazebo/Grey</material>
+    </gazebo> 
+
+    <gazebo reference="esquina_der">
+        <material>Gazebo/Grey</material>
+    </gazebo>    
+
+    <gazebo reference="esquina_izq">
+        <material>Gazebo/Grey</material>
+    </gazebo> 
+
+    <gazebo reference="servo_front">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo> 
+
+    <gazebo reference="servo_der">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>    
+
+    <gazebo reference="servo_izq">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo> 
+
+    <gazebo>
+        <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryRate>20.0</odometryRate>
+        <robotBaseFram>base_footprint</robotBaseFram>
+
+        <publish_odom>true</publish_odom>
+        <publish_odom_tf>true</publish_odom_tf>
+        </plugin>
+  </gazebo>
+</robot>

@@ -1,0 +1,351 @@
+<?xml version="1.0" ?>
+<robot name="ow_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find ow_bot)/urdf/materials.xacro" />
+<xacro:include filename="$(find ow_bot)/urdf/ow_bot.trans" />
+<xacro:include filename="$(find ow_bot)/urdf/ow_bot.gazebo" />
+<link name="base_link">
+  <!--cd -->
+  <visual>
+    <origin xyz="0 0 1000" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 1000" rpy="0 0 0"/>
+    <geometry>
+      <box size="300 300 300"/>
+     </geometry> 
+    <!--<geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry> -->
+  </collision>
+</link>
+
+<link name="perfil_ts">
+  <inertial>
+    <origin xyz="-3.552713678800501e-17 -4.759991029112953e-07 -0.010000000278323328" rpy="0 0 0"/>
+    <mass value="0.1245226402427353"/>
+    <inertia ixx="1e-05" iyy="0.000654" izz="0.000654" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.120232 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.120232 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="perfil_ds">
+  <inertial>
+    <origin xyz="3.7818338929906936e-07 2.377733820946304e-07 -0.010000000278323328" rpy="0 0 0"/>
+    <mass value="0.1245226402427353"/>
+    <inertia ixx="0.000493" iyy="0.000171" izz="0.000654" ixy="0.000279" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.104124 -0.060116 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.104124 -0.060116 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="perfil_is">
+  <inertial>
+    <origin xyz="-3.785751259421932e-07 2.3799955143483098e-07 -0.010000000278323328" rpy="0 0 0"/>
+    <mass value="0.1245226402427353"/>
+    <inertia ixx="0.000493" iyy="0.000171" izz="0.000654" ixy="-0.000279" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.104124 -0.060116 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.104124 -0.060116 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="perfil_ti">
+  <inertial>
+    <origin xyz="-3.552713678800501e-17 -4.759991029112953e-07 -0.06890000027832334" rpy="0 0 0"/>
+    <mass value="0.1245226402427353"/>
+    <inertia ixx="1e-05" iyy="0.000654" izz="0.000654" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.120232 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.120232 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="perfil_di">
+  <inertial>
+    <origin xyz="3.7818338929906936e-07 2.377733820946304e-07 -0.06890000027832334" rpy="0 0 0"/>
+    <mass value="0.1245226402427353"/>
+    <inertia ixx="0.000493" iyy="0.000171" izz="0.000654" ixy="0.000279" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.104124 -0.060116 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.104124 -0.060116 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="perfil_ii">
+  <inertial>
+    <origin xyz="-3.785751259421932e-07 2.3799955143483098e-07 -0.06890000027832334" rpy="0 0 0"/>
+    <mass value="0.1245226402427353"/>
+    <inertia ixx="0.000493" iyy="0.000171" izz="0.000654" ixy="-0.000279" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.104124 -0.060116 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.104124 -0.060116 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="esquina_izq">
+  <inertial>
+    <origin xyz="-0.13623310759578422 -0.4254929058915987 -0.007018873971046356" rpy="0 0 0"/>
+    <mass value="0.2287051948439656"/>
+    <inertia ixx="0.000507" iyy="0.00032" izz="0.000493" ixy="0.000162" iyz="7e-06" ixz="1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.00866 -0.341739 0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.00866 -0.341739 0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="esquina_der">
+  <inertial>
+    <origin xyz="0.14497956396618764 0.16686084093457815 -0.007018873971046356" rpy="0 0 0"/>
+    <mass value="0.2287051948439656"/>
+    <inertia ixx="0.000507" iyy="0.00032" izz="0.000493" ixy="-0.000162" iyz="7e-06" ixz="-1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.250465 0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.250465 0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="esquina_front">
+  <inertial>
+    <origin xyz="-0.19967545637040346 -0.04414793504297959 -0.007018873971046356" rpy="0 0 0"/>
+    <mass value="0.2287051948439656"/>
+    <inertia ixx="0.000226" iyy="0.000601" izz="0.000493" ixy="-0.0" iyz="-1.3e-05" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.199589 -0.211506 0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.199589 -0.211506 0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="servo_izq">
+  <inertial>
+    <origin xyz="0.05947146702390413 0.007145019629350158 -0.017998152129648507" rpy="0 0 0"/>
+    <mass value="0.37770787245337206"/>
+    <inertia ixx="0.000303" iyy="0.000431" izz="0.000439" ixy="-0.000111" iyz="-1.4e-05" ixz="-2.5e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.171378 0.071909 0.028" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.171378 0.071909 0.028" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="servo_der">
+  <inertial>
+    <origin xyz="-0.03592348126077266 0.04793108977858487 -0.01799815212964848" rpy="0 0 0"/>
+    <mass value="0.37770787245337206"/>
+    <inertia ixx="0.000303" iyy="0.000432" izz="0.000439" ixy="0.000111" iyz="-1.4e-05" ixz="2.5e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.147964 0.112463 0.028" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.147964 0.112463 0.028" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="servo_front">
+  <inertial>
+    <origin xyz="-0.023547985763131538 -0.05507610940793514 -0.01799815212964848" rpy="0 0 0"/>
+    <mass value="0.37770787245337206"/>
+    <inertia ixx="0.000496" iyy="0.000239" izz="0.000439" ixy="0.0" iyz="2.9e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.023414 -0.184372 0.028" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.023414 -0.184372 0.028" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find ow_bot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="perfil_ts_joint" type="fixed">
+  <origin xyz="0.0 -0.120232 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="perfil_ts"/>
+</joint>
+
+<joint name="perfil_ds_joint" type="fixed">
+  <origin xyz="0.104124 0.060116 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="perfil_ds"/>
+</joint>
+
+<joint name="perfil_is_joint" type="fixed">
+  <origin xyz="-0.104124 0.060116 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="perfil_is"/>
+</joint>
+
+<joint name="perfil_ti_joint" type="fixed">
+  <origin xyz="0.0 -0.120232 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="perfil_ti"/>
+</joint>
+
+<joint name="perfil_di_joint" type="fixed">
+  <origin xyz="0.104124 0.060116 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="perfil_di"/>
+</joint>
+
+<joint name="perfil_ii_joint" type="fixed">
+  <origin xyz="-0.104124 0.060116 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="perfil_ii"/>
+</joint>
+
+<joint name="esquina_izq_joint" type="fixed">
+  <origin xyz="0.095464 0.281623 -0.03" rpy="0 0 0"/>
+  <parent link="perfil_is"/>
+  <child link="esquina_izq"/>
+</joint>
+
+<joint name="esquina_der_joint" type="fixed">
+  <origin xyz="0.0 -0.130233 -0.03" rpy="0 0 0"/>
+  <parent link="perfil_ts"/>
+  <child link="esquina_der"/>
+</joint>
+
+<joint name="esquina_front_joint" type="fixed">
+  <origin xyz="0.095465 0.15139 -0.03" rpy="0 0 0"/>
+  <parent link="perfil_ds"/>
+  <child link="esquina_front"/>
+</joint>
+
+<joint name="servo_izq_joint" type="fixed">
+  <origin xyz="-0.162718 -0.413648 0.002" rpy="0 0 0"/>
+  <parent link="esquina_izq"/>
+  <child link="servo_izq"/>
+</joint>
+
+<joint name="servo_der_joint" type="fixed">
+  <origin xyz="0.147964 0.138002 0.002" rpy="0 0 0"/>
+  <parent link="esquina_der"/>
+  <child link="servo_der"/>
+</joint>
+
+<joint name="servo_front_joint" type="fixed">
+  <origin xyz="-0.176175 -0.027134 0.002" rpy="0 0 0"/>
+  <parent link="esquina_front"/>
+  <child link="servo_front"/>
+</joint>
+
+</robot>

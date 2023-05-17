@@ -1,0 +1,530 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <xacro:include filename="inertial_macros.xacro"/>
+
+    <xacro:property name="altura_eje_base" value="0.02335"/>
+    <xacro:property name="grosor_base" value="0.006"/>
+    <xacro:property name="radio_rueda" value="0.05"/>
+    <xacro:property name="grosor_robot" value="0.08375"/>
+    <xacro:property name="offset_perfiles" value="0.1205"/>
+    <xacro:property name="grosor_perfiles" value="0.02"/>
+    <xacro:property name="largo_perfiles" value="0.25"/>
+    <xacro:property name="offset_esquinas" value="0.19"/>
+    <xacro:property name="ancho_servo" value="0.05715"/>
+    <xacro:property name="largo_servo" value="0.10985"/>
+    <xacro:property name="offset_vertical_servo" value="0.0045"/>
+    <xacro:property name="offset_horizontal_servo" value="0.004"/>
+
+    <!--Materiales para visualizacion en RVIZ-->
+    <xacro:include filename="materials.xacro"/>
+    <!--Materiales para visualizacion en gazebo-->
+    <xacro:include filename="robot.gazebo.xacro"/>
+    <!-- BASE LINK -->
+
+    <link name="base_footprint">
+
+    </link>
+
+
+    <!-- PLACA INFERIOR -->
+
+    <joint name="base_inferior_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_inferior"/>
+        <origin xyz="0 0 ${radio_rueda-altura_eje_base}"/>
+    </joint>
+
+    <link name="base_inferior">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/base.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/base.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+
+    
+    <!-- PLACA SUPERIOR -->
+    <joint name="base_superior_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_superior"/>
+        <origin xyz="0 0 ${radio_rueda - altura_eje_base + grosor_robot}"/>
+    </joint>
+
+    <link name="base_superior">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/base.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/base.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+
+    <!-- PERFIL TRASERO INFERIOR -->
+    <joint name="perfil_ti_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="perfil_ti"/>
+        <origin xyz="${-largo_perfiles/2} ${-offset_perfiles-grosor_perfiles/2} ${radio_rueda - altura_eje_base + grosor_perfiles/2 - grosor_base}"/>
+    </joint>
+
+    <link name="perfil_ti">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+
+    <!-- PERFIL TRASERO SUPERIOR -->
+    <joint name="perfil_ts_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="perfil_ts"/>
+        <origin xyz="${-largo_perfiles/2} ${-offset_perfiles-grosor_perfiles/2} ${radio_rueda - altura_eje_base + grosor_robot- grosor_perfiles}"/>
+    </joint>
+
+    <link name="perfil_ts">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+    
+
+
+        <!-- PERFIL DERECHO INFERIOR -->
+    <joint name="perfil_di_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="perfil_di"/>
+        <origin xyz="${(-largo_perfiles/2)*cos(2*pi/3)-(-offset_perfiles-grosor_perfiles/2)*sin(2*pi/3)} ${(-largo_perfiles/2)*sin(2*pi/3)+(-offset_perfiles-grosor_perfiles/2)*cos(2*pi/3)} ${radio_rueda - altura_eje_base + grosor_perfiles/2 - grosor_base}" rpy="0 0 ${2*pi/3}"/>
+    </joint>
+
+    <link name="perfil_di">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+
+    <!-- PERFIL DERECHO SUPERIOR -->
+    <joint name="perfil_ds_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="perfil_ds"/>
+        <origin xyz="${(-largo_perfiles/2)*cos(2*pi/3)-(-offset_perfiles-grosor_perfiles/2)*sin(2*pi/3)} ${(-largo_perfiles/2)*sin(2*pi/3)+(-offset_perfiles-grosor_perfiles/2)*cos(2*pi/3)} ${radio_rueda - altura_eje_base + grosor_robot- grosor_perfiles}" rpy="0 0 ${2*pi/3}"/>
+    </joint>
+
+    <link name="perfil_ds">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+
+     <!-- PERFIL IZQUIERDO INFERIOR -->
+    <joint name="perfil_ii_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="perfil_ii"/>
+        <origin xyz="${(-largo_perfiles/2)*cos(4*pi/3)-(-offset_perfiles-grosor_perfiles/2)*sin(4*pi/3)} ${(-largo_perfiles/2)*sin(4*pi/3)+(-offset_perfiles-grosor_perfiles/2)*cos(4*pi/3)} ${radio_rueda - altura_eje_base + grosor_perfiles/2 - grosor_base}" rpy="0 0 ${4*pi/3}"/>
+    </joint>
+
+    <link name="perfil_ii">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+
+    <!-- PERFIL IZQUIERDO SUPERIOR -->
+    <joint name="perfil_is_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="perfil_is"/>
+        <origin xyz="${(-largo_perfiles/2)*cos(4*pi/3)-(-offset_perfiles-grosor_perfiles/2)*sin(4*pi/3)} 
+                     ${(-largo_perfiles/2)*sin(4*pi/3)+(-offset_perfiles-grosor_perfiles/2)*cos(4*pi/3)} 
+                     ${radio_rueda - altura_eje_base + grosor_robot- grosor_perfiles}" 
+                rpy="0 0 ${4*pi/3}"/>
+    </joint>
+
+    <link name="perfil_is">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/perfil.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+
+
+    <!-- ESQUINA FRONTAL-->
+    <joint name="esquina_front_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="esquina_front"/>
+        <origin xyz="0 ${offset_esquinas} ${radio_rueda-altura_eje_base}" rpy="0 0 ${pi}"/>
+    </joint>
+
+    <link name="esquina_front">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+    <!-- ESQUINA DERECHA-->
+    <joint name="esquina_der_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="esquina_der"/>
+        <origin xyz="${-offset_esquinas * sin(2*pi/3)} ${offset_esquinas * cos(2*pi/3)} ${radio_rueda-altura_eje_base}" rpy="0 0 ${5*pi/3}"/>
+    </joint>
+
+    <link name="esquina_der">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+
+    <!-- ESQUINA IZQUIERDA-->
+    <joint name="esquina_izq_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="esquina_izq"/>
+        <origin xyz="${-offset_esquinas * sin(-2*pi/3)} ${offset_esquinas * cos(-2*pi/3)} ${radio_rueda-altura_eje_base}" rpy="0 0 ${pi/3}"/>
+    </joint>
+
+    <link name="esquina_izq">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/esquina.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+    <!-- SERVO IZQUIERDO-->
+    <joint name="servo_izq_joint" type="fixed">
+        <parent link="esquina_izq"/>
+        <child link="servo_izq"/>
+        <origin xyz="${-ancho_servo/2} ${largo_servo + offset_horizontal_servo} ${offset_vertical_servo}" rpy="${pi/2} 0 0"/>
+    </joint>
+
+    <link name="servo_izq">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+
+    <!-- SERVO DERECHO-->
+    <joint name="servo_der_joint" type="fixed">
+        <parent link="esquina_der"/>
+        <child link="servo_der"/>
+        <origin xyz="${-ancho_servo/2} ${largo_servo + offset_horizontal_servo} ${offset_vertical_servo}" rpy="${pi/2} 0 0"/>
+    </joint>
+
+    <link name="servo_der">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+    <!-- SERVO FRONTAL-->
+    <joint name="servo_front_joint" type="fixed">
+        <parent link="esquina_front"/>
+        <child link="servo_front"/>
+        <origin xyz="${-ancho_servo/2} ${largo_servo + offset_horizontal_servo} ${offset_vertical_servo}" rpy="${pi/2} 0 0"/>
+    </joint>
+
+    <link name="servo_front">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_robot)/meshes/servo.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+    
+
+  <!-- RUEDA FRONTAL-->
+    <joint name="rueda_front_joint" type="fixed">
+        <parent link="servo_front"/>
+        <child link="rueda_front"/>
+        <origin xyz="${ancho_servo/2} 0.026575 0.15 " rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="rueda_front">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+               <cylinder radius="0.050" length="0.04"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.050" length="0.04"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+    
+     <!-- RUEDA der-->
+    <joint name="rueda_der_joint" type="fixed">
+        <parent link="servo_der"/>
+        <child link="rueda_der"/>
+        <origin xyz="${ancho_servo/2} 0.026575 0.15 " rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="rueda_der">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+               <cylinder radius="0.050" length="0.04"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.050" length="0.04"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>  
+    
+    
+    <!-- RUEDA izq-->
+    <joint name="rueda_izq_joint" type="fixed">
+        <parent link="servo_izq"/>
+        <child link="rueda_izq"/>
+        <origin xyz="${ancho_servo/2} 0.026575 0.15 " rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="rueda_izq">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+               <cylinder radius="0.050" length="0.04"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.050" length="0.04"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-1.682342458356941e-17 8.411712291784705e-17 0.002" rpy="0 0 0"/>
+            <mass value="0.19"/>
+            <inertia ixx="0.000588" iyy="0.000588" izz="0.001175" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+   
+  
+</robot>

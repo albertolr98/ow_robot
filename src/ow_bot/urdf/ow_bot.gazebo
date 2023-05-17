@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<robot name="ow_bot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+
+<gazebo>
+  <plugin name="control" filename="libgazebo_ros_control.so"/>
+</gazebo>
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="perfil_ts">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="perfil_ds">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="perfil_is">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="perfil_ti">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="perfil_di">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="perfil_ii">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="esquina_izq">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="esquina_der">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="esquina_front">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="servo_izq">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="servo_der">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="servo_front">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+</robot>
