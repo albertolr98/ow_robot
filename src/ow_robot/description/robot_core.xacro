@@ -2,19 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
     <xacro:include filename="inertial_macros.xacro"/>
+    <xacro:include filename="params.xacro"/>
 
-    <xacro:property name="altura_eje_base" value="0.02335"/>
-    <xacro:property name="grosor_base" value="0.006"/>
-    <xacro:property name="radio_rueda" value="0.05"/>
-    <xacro:property name="grosor_robot" value="0.08375"/>
-    <xacro:property name="offset_perfiles" value="0.1205"/>
-    <xacro:property name="grosor_perfiles" value="0.02"/>
-    <xacro:property name="largo_perfiles" value="0.25"/>
-    <xacro:property name="offset_esquinas" value="0.19"/>
-    <xacro:property name="ancho_servo" value="0.05715"/>
-    <xacro:property name="largo_servo" value="0.10985"/>
-    <xacro:property name="offset_vertical_servo" value="0.0045"/>
-    <xacro:property name="offset_horizontal_servo" value="0.004"/>
 
     <!--Materiales para visualizacion en RVIZ-->
     <xacro:include filename="materials.xacro"/>
@@ -22,8 +11,14 @@
     <xacro:include filename="robot.gazebo.xacro"/>
     <!-- BASE LINK -->
 
+    <!-- root link, on the ground just below the model origin -->
     <link name="base_footprint">
-
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <box size="0.001 0.001 0.001" />
+        </geometry>
+        </visual>
     </link>
 
 
