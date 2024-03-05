@@ -1,0 +1,17 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/albertolr98/OW_ROBOT/install/ow_control/lib/python3.10/site-packages",
+        "/home/albertolr98/OW_ROBOT/install/ow_interfaces/local/lib/python3.10/dist-packages",
+        "/home/albertolr98/OW_ROBOT/install/ow_bot/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/albertolr98/OW_ROBOT/install/ow_control/lib/python3.10/site-packages",
+        "/home/albertolr98/OW_ROBOT/install/ow_interfaces/local/lib/python3.10/dist-packages",
+        "/home/albertolr98/OW_ROBOT/install/ow_bot/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "ros.distro": "humble"
+}

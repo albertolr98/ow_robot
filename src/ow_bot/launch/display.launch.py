@@ -4,14 +4,17 @@ from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 from launch.conditions import IfCondition, UnlessCondition
 import xacro
-import os
+import os 
 from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
+    # Check if we're told to use sim time
+    use_sim_time = LaunchConfiguration('use_sim_time')
+
     share_dir = get_package_share_directory('ow_bot')
 
-    xacro_file = os.path.join(share_dir, 'urdf', 'ow_bot.xacro')
+    xacro_file = os.path.join(share_dir, 'description', 'ow_bot.xacro')
     robot_description_config = xacro.process_file(xacro_file)
     robot_urdf = robot_description_config.toxml()
 

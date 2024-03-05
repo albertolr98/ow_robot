@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<robot name="ow_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find ow_bot)/description/materials.xacro" />
+    <xacro:include filename="$(find ow_bot)/description/ow_bot.trans" />
+    <xacro:include filename="$(find ow_bot)/description/ow_bot.gazebo" />
+    <xacro:include filename="$(find ow_bot)/description/omniwheel.xacro" />
+
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_bot)/meshes/base.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.263 0.228 0.004"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Instance of left wheel -->
+    <link name="left_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file://$(find ow_bot)/meshes/omniwheel.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+            <cylinder radius="0.05" length="0.03"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin xyz="0.0 0.0 0" rpy="1.57 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+
+</robot>

@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<robot name="ow_bot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+
+<xacro:property name="wheel_radius" value="0.05"/>
+<xacro:property name="wheel_lenght" value="0.03"/>
+
+
+
+<!-- Macro for creating and positioning wheels of the robot -->
+<xacro:macro name="omniwheel" params="prefix parent_link angle">
+   
+   
+    <link name="${prefix}_omniwheel">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find ow_bot)/meshes/omniwheel.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_lenght}"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.582"/>                   <!-- Masa obtenida de CAD -->
+            <origin xyz="0 0 0.0105" rpy="0 0 0"/>  <!-- Posicion CG de CAD -->
+            <inertia ixx="" ixy="0.0" ixz="0.0" 
+                               iyy="0.1" iyz="0.0" 
+                                         izz="0.1"/>
+        </inertial>
+    </link>
+        
+    <joint name="${prefix}_joint" type="continuous">
+        <parent link="${parent_link}"/>
+        <child link="${prefix}_omniwheel"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+    
+</xacro:macro>
+
+</robot>

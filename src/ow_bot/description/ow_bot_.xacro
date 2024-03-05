@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <robot name="ow_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<xacro:include filename="$(find ow_bot)/urdf/materials.xacro" />
-<xacro:include filename="$(find ow_bot)/urdf/ow_bot.trans" />
-<xacro:include filename="$(find ow_bot)/urdf/ow_bot.gazebo" />
+<xacro:include filename="$(find ow_bot)/description/materials.xacro" />
+<xacro:include filename="$(find ow_bot)/description/ow_bot.trans" />
+<xacro:include filename="$(find ow_bot)/description/ow_bot.gazebo" />
 <link name="base_link">
   <!--cd -->
   <visual>
-    <origin xyz="0 0 1000" rpy="0 0 0"/>
+    <origin xyz="0 0 10000" rpy="0 0 0"/>
     <geometry>
       <mesh filename="file://$(find ow_bot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -18,9 +18,7 @@
     <geometry>
       <box size="300 300 300"/>
      </geometry> 
-    <!--<geometry>
-      <mesh filename="file://$(find ow_bot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
-    </geometry> -->
+    
   </collision>
 </link>
 
